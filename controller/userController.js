@@ -4,7 +4,7 @@ const User = require("../model/user")
 
 exports.getUser = async (req,res) => {
     try {
-        const data = await User.find()
+        const data = await User.find().populate("userId")
         return res.json({errors:false,data:data})
     } catch (error) {
         return res.status(400).json({errors:true,message:error.message})
